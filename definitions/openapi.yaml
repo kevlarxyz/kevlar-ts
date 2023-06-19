@@ -1,0 +1,1175 @@
+openapi: 3.1.0
+info:
+  title: Vault Ethereum Plugin
+  description: >-
+    This is a Vault plugin that allows for the creation of Ethereum accounts and signing of transactions using those accounts.
+
+    Contact Support:
+     Name: @kevlarxyz
+     Email: support@kevlar.xyz
+  contact: {}
+  version: '1.0'
+jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
+servers:
+- url: https://localhost:9200/v1/vault-ethereum
+  variables: {}
+paths:
+  /convert:
+    post:
+      tags:
+      - convert
+      summary: get a conversion
+      operationId: getaconversion
+      parameters:
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      - name: X-VAULT_REQUEST
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: boolean
+          examples:
+          - true
+      - name: X-VAULT-TOKEN
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - hvs.123456
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /config:
+    get:
+      tags:
+      - config
+      summary: get the configuration
+      operationId: gettheconfiguration
+      parameters:
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      - name: X-VAULT_REQUEST
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: boolean
+          examples:
+          - true
+      - name: X-VAULT-TOKEN
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - hvs.123456
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    put:
+      tags:
+      - config
+      summary: write a configuration
+      operationId: writeaconfiguration
+      parameters:
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      - name: X-VAULT_REQUEST
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: boolean
+          examples:
+          - true
+      - name: X-VAULT-TOKEN
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - hvs.123456
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/writeaconfigurationrequest'
+              - examples:
+                - chain_id: ''
+                  rpc_url: ''
+              contentMediaType: application/json
+            example:
+              chain_id: ''
+              rpc_url: ''
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /accounts/{account-name}/transfer:
+    put:
+      tags:
+      - transfer
+      summary: transfer ETH
+      operationId: transferETH
+      parameters:
+      - name: account-name
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - 'null'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      - name: X-VAULT_REQUEST
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: boolean
+          examples:
+          - true
+      - name: X-VAULT-TOKEN
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - hvs.123456
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/transferETHRequest'
+              - examples:
+                - amount: ''
+                  to: ''
+              contentMediaType: application/json
+            example:
+              amount: ''
+              to: ''
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /accounts/{account-name}/erc20/transfer:
+    post:
+      tags:
+      - transfer
+      summary: transfer an erc20
+      operationId: transferanerc20
+      parameters:
+      - name: account-name
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - 'null'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /accounts/{account-name}/sign-tx:
+    put:
+      tags:
+      - sign-tx
+      summary: sign a transaction
+      operationId: signatransaction
+      parameters:
+      - name: account-name
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - 'null'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      - name: X-VAULT_REQUEST
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: boolean
+          examples:
+          - true
+      - name: X-VAULT-TOKEN
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - hvs.123456
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/signatransactionrequest'
+              - examples:
+                - amount: ''
+                  data: ''
+                  to: ''
+              contentMediaType: application/json
+            example:
+              amount: ''
+              data: ''
+              to: ''
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /accounts/{account-name}/sign:
+    put:
+      tags:
+      - sign
+      summary: sign a message
+      operationId: signamessage
+      parameters:
+      - name: account-name
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - 'null'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      - name: X-VAULT_REQUEST
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: boolean
+          examples:
+          - true
+      - name: X-VAULT-TOKEN
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - hvs.123456
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/signamessagerequest'
+              - examples:
+                - message: ''
+              contentMediaType: application/json
+            example:
+              message: ''
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /accounts/{account-name}/erc721/tokenURI:
+    get:
+      tags:
+      - tokenURI
+      summary: erc721 get token uri
+      operationId: erc721gettokenuri
+      parameters:
+      - name: account-name
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - 'null'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /accounts/{account-name}/erc721/tokenOfOwnerByIndex:
+    get:
+      tags:
+      - tokenOfOwnerByIndex
+      summary: erc721 token of owner by index
+      operationId: erc721tokenofownerbyindex
+      parameters:
+      - name: account-name
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - 'null'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /accounts/{account-name}/erc721/tokenByIndex:
+    get:
+      tags:
+      - tokenByIndex
+      summary: erc721 get token by index
+      operationId: erc721gettokenbyindex
+      parameters:
+      - name: account-name
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - 'null'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /accounts/{account-name}/erc721/setApprovalForAll:
+    post:
+      tags:
+      - setApprovalForAll
+      summary: erc721 set approval for all
+      operationId: erc721setapprovalforall
+      parameters:
+      - name: account-name
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - 'null'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /accounts/{account-name}/erc721/safeTransferFrom:
+    post:
+      tags:
+      - safeTransferFrom
+      summary: erc721 safe transfer from
+      operationId: erc721safetransferfrom
+      parameters:
+      - name: account-name
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - 'null'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /accounts/{account-name}/erc721/ownerOf:
+    get:
+      tags:
+      - ownerOf
+      summary: erc721 safe transfer from
+      operationId: Geterc721safetransferfrom
+      parameters:
+      - name: account-name
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - 'null'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /accounts/{account-name}/erc721/metadata:
+    get:
+      tags:
+      - metadata
+      summary: erc721 get metadata
+      operationId: erc721getmetadata
+      parameters:
+      - name: account-name
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - 'null'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /accounts/{account-name}/erc721/isApprovedForAll:
+    get:
+      tags:
+      - isApprovedForAll
+      summary: erc721 check if is approved for all
+      operationId: erc721checkifisapprovedforall
+      parameters:
+      - name: account-name
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - 'null'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /accounts/{account-name}/erc721/getApproved:
+    get:
+      tags:
+      - getApproved
+      summary: erc721 get the approved address for a single nft
+      operationId: erc721gettheapprovedaddressforasinglenft
+      parameters:
+      - name: account-name
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - 'null'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /accounts/{account-name}/erc721/balanceOf:
+    get:
+      tags:
+      - balanceOf
+      summary: erc721 balance of
+      operationId: erc721balanceof
+      parameters:
+      - name: account-name
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - 'null'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /accounts/{account-name}/erc20/balanceOf:
+    post:
+      tags:
+      - balanceOf
+      summary: get erc20 balance
+      operationId: geterc20balance
+      parameters:
+      - name: account-name
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - 'null'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /accounts/{account-name}/erc721/approve:
+    post:
+      tags:
+      - approve
+      summary: erc721 approve
+      operationId: erc721approve
+      parameters:
+      - name: account-name
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - 'null'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /accounts/{account-name}/erc20/approve:
+    post:
+      tags:
+      - approve
+      summary: erc20 approve
+      operationId: erc20approve
+      parameters:
+      - name: account-name
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - 'null'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /accounts/{account-name}/erc20/transferFrom:
+    post:
+      tags:
+      - transferFrom
+      summary: transfer erc20 from one address to this
+      operationId: transfererc20fromoneaddresstothis
+      parameters:
+      - name: account-name
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - 'null'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /accounts/{account-name}/erc20/totalSupply:
+    post:
+      tags:
+      - totalSupply
+      summary: get erc20 total supply
+      operationId: geterc20totalsupply
+      parameters:
+      - name: account-name
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - 'null'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /accounts/{account-name}/deploy:
+    get:
+      tags:
+      - deploy
+      summary: deploy a smart contract
+      operationId: deployasmartcontract
+      parameters:
+      - name: account-name
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - 'null'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /accounts/{account-name}/balance:
+    get:
+      tags:
+      - balance
+      summary: read balance
+      operationId: readbalance
+      parameters:
+      - name: account-name
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - 'null'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      - name: X-VAULT_REQUEST
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: boolean
+          examples:
+          - true
+      - name: X-VAULT-TOKEN
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - hvs.123456
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /accounts/{account-name}:
+    get:
+      tags:
+      - '{account-name}'
+      summary: read an account
+      operationId: readanaccount
+      parameters:
+      - name: account-name
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      - name: X-VAULT_REQUEST
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: boolean
+          examples:
+          - true
+      - name: X-VAULT-TOKEN
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - hvs.123456
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    put:
+      tags:
+      - '{account-name}'
+      summary: create an account
+      operationId: createanaccount
+      parameters:
+      - name: account-name
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - 'null'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      - name: X-VAULT_REQUEST
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: boolean
+          examples:
+          - true
+      - name: X-VAULT-TOKEN
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - hvs.123456
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/createanaccountrequest'
+              - examples:
+                - inclusions: ''
+                  exclusions: ''
+              contentMediaType: application/json
+            example:
+              inclusions: ''
+              exclusions: ''
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+  /accounts:
+    get:
+      tags:
+      - accounts
+      summary: list all accounts
+      operationId: listallaccounts
+      parameters:
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - application/json
+      - name: X-VAULT_REQUEST
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: boolean
+          examples:
+          - true
+      - name: X-VAULT-TOKEN
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          examples:
+          - hvs.123456
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    parameters: []
+components:
+  schemas:
+    writeaconfigurationrequest:
+      title: writeaconfigurationrequest
+      required:
+      - chain_id
+      - rpc_url
+      type: object
+      properties:
+        chain_id:
+          type: string
+        rpc_url:
+          type: string
+      examples:
+      - chain_id: ''
+        rpc_url: ''
+    transferETHRequest:
+      title: transferETHRequest
+      required:
+      - amount
+      - to
+      type: object
+      properties:
+        amount:
+          type: string
+        to:
+          type: string
+      examples:
+      - amount: ''
+        to: ''
+    signatransactionrequest:
+      title: signatransactionrequest
+      required:
+      - amount
+      - data
+      - to
+      type: object
+      properties:
+        amount:
+          type: string
+        data:
+          type: string
+        to:
+          type: string
+      examples:
+      - amount: ''
+        data: ''
+        to: ''
+    signamessagerequest:
+      title: signamessagerequest
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+      examples:
+      - message: ''
+    createanaccountrequest:
+      title: createanaccountrequest
+      required:
+      - inclusions
+      - exclusions
+      type: object
+      properties:
+        inclusions:
+          type: string
+        exclusions:
+          type: string
+      examples:
+      - inclusions: ''
+        exclusions: ''
+    updateanaccountrequest:
+      title: updateanaccountrequest
+      required:
+      - inclusions
+      - exclusions
+      type: object
+      properties:
+        inclusions:
+          type: string
+        exclusions:
+          type: string
+      examples:
+      - inclusions: ''
+        exclusions: ''
+tags:
+- name: convert
+- name: config
+- name: transfer
+- name: sign-tx
+- name: sign
+- name: tokenURI
+- name: tokenOfOwnerByIndex
+- name: tokenByIndex
+- name: setApprovalForAll
+- name: safeTransferFrom
+- name: ownerOf
+- name: metadata
+- name: isApprovedForAll
+- name: getApproved
+- name: balanceOf
+- name: approve
+- name: transferFrom
+- name: totalSupply
+- name: deploy
+- name: balance
+- name: '{account-name}'
+- name: accounts
