@@ -1,4 +1,4 @@
-## kevlar
+## kevlar-ts
 
 This is a Typescript library for interfacing with the Vault plugin that allows for the creation of EVM accounts and signing of transactions using those accounts.
 
