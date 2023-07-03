@@ -1,6 +1,6 @@
 {
   "name": "kevlar-ts",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "Typescript client for Kevlar Vault",
   "author": "Kevlar Team",
   "repository": {
