@@ -1,5 +1,5 @@
 {
-  "name": "kevlar-ts",
+  "name": "@kevlarxyz/kevlar-ts",
   "version": "1.0.0",
   "description": "Typescript client for Kevlar Vault",
   "author": "Kevlar Team",
