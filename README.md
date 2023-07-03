@@ -16,13 +16,3 @@ To build and compile the typescript sources to javascript use:
 npm install
 npm run build
 ```
-
-### Consuming
-
-Navigate to the folder of your consuming project and run one of the following commands.
-
-_published:_
-
-```
-npm install kevlar-ts@1.0 --save
-```
