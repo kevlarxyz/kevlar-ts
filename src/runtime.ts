@@ -186,7 +186,10 @@ export class BaseAPI {
                     response = await middleware.onError({
                         fetch: this.fetchApi,
                         url: fetchParams.url,
-                        init: fetchParams.init,
+                        init: {
+                            ...fetchParams.init,
+                            mode: 'no-cors',
+                        },
                         error: e,
                         response: response ? response.clone() : undefined,
                     }) || response;
